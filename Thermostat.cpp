@@ -15,3 +15,14 @@ void Thermostat::performAction(const std::string& action) {
 std::string Thermostat::getDeviceType() const {
     return "Thermostat";
 }
+
+void Thermostat::setSmartTemperature(double temp) // for adapter
+{
+    temperature = temp;
+
+}
+
+double Thermostat::getSmartTemperature() const // for adapter 
+{
+    return temperature;
+}
