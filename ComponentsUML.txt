@@ -1,0 +1,28 @@
+Component1 : Composite 
+
+Composite - CompositeRooms
+Component - SmartDevices 
+Leafs - lights , doors , alarms, cameras, thermostat
+
+
+Component2 : Adapter
+
+Adapter - SmartRoomsAdapter 
+Target - Rooms
+Adaptee - CompositeRooms
+
+
+Component3 :Command
+
+Invoker - Remote 
+Command - MacroRoutine
+ConcreteCommand - OnOffLights, lockDoors, onOffAlarms, onOffCameras, IncDecThermostat
+Receiver - lights , doors , alarms, cameras, thermostat  / or CompositeRooms
+
+Component4 : Observer 
+
+Subject -SmartDevices
+Observer - Sensors
+ConcreteObserver -LightSensor, DoorSensor, alarmSensor, cameraSensor, thermostatsensor
+ConcreteSubject - lights , doors , alarms, cameras, thermostat 
+
