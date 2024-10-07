@@ -1,7 +1,6 @@
 #include "CompositeRoom.h"
 
-CompositeRoom::CompositeRoom()
-{
+CompositeRoom::CompositeRoom(){
 }
 
 void CompositeRoom::addDevice(SmartDevices* device) {
@@ -9,16 +8,24 @@ void CompositeRoom::addDevice(SmartDevices* device) {
 }
 
 void CompositeRoom::removeDevice(SmartDevices* device) {
-    // Remove device from vector
+    auto it = std::remove(devices.begin(), devices.end(), device);
+    if (it != devices.end()) {
+        devices.erase(it, devices.end());
+    }
 }
 
 std::string CompositeRoom::getStatus() {
-    // Aggregate and return the status of all devices in the room
-    return "Composite Room Status";
+    std::string status = "Composite Room Status: \n";
+    for (SmartDevices* device : devices) {
+        status += device->getDeviceType() + ": " + device->getStatus() + "\n";
+    }
+    return status;
 }
 
 void CompositeRoom::performAction(const std::string& action) {
-    // Perform the action on all devices in the room
+    for (SmartDevices* device : devices) {
+        device->performAction(action);
+    }
 }
 
 std::string CompositeRoom::getDeviceType() const {

@@ -9,7 +9,17 @@ std::string Thermostat::getStatus() {
 }
 
 void Thermostat::performAction(const std::string& action) {
-    // Handle actions like "IncreaseTemp", "DecreaseTemp", etc.
+    
+    if (action == "IncreaseTemp") {
+        temperature += 1;
+        std::cout << "Thermostat temperature increased to " << temperature << "°C." << std::endl;
+    } else if (action == "DecreaseTemp") {
+        temperature -= 1;
+        std::cout << "Thermostat temperature decreased to " << temperature << "°C." << std::endl;
+    } else {
+        std::cout << "Unknown action: " << action << std::endl;
+    }
+    
 }
 
 std::string Thermostat::getDeviceType() const {

@@ -2,6 +2,7 @@
 #define ALARM_H
 
 #include "SmartDevices.h"
+#include <iostream>
 
 class Alarm : public SmartDevices {
 public:

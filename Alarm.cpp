@@ -1,7 +1,7 @@
 #include "Alarm.h"
 
 Alarm::Alarm() : isOn(false) {
-    // Initialize alarm
+    // alarm is initially off
 }
 
 std::string Alarm::getStatus() {
@@ -9,7 +9,20 @@ std::string Alarm::getStatus() {
 }
 
 void Alarm::performAction(const std::string& action) {
-    // Handle actions like "ToggleOn", "ToggleOff", etc.
+    
+    if (action == "ToggleOn") {
+        isOn = true;
+        std::cout << "Alarm is turned on." << std::endl;
+    } else if (action == "ToggleOff") {
+        isOn = false;
+        std::cout << "Alarm is turned off." << std::endl;
+    } else if (action == "Toggle") {
+        isOn = !isOn;
+        std::cout << "Alarm toggled to " << (isOn ? "on" : "off") << "." << std::endl;
+    } else {
+        std::cout << "Unknown action: " << action << std::endl;
+    }
+
 }
 
 std::string Alarm::getDeviceType() const {

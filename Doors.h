@@ -2,6 +2,7 @@
 #define DOORS_H
 
 #include "SmartDevices.h"
+#include<iostream>
 
 class Doors : public SmartDevices {
 public:

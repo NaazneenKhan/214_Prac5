@@ -1,7 +1,7 @@
 #include "Camera.h"
 
 Camera::Camera() : isOn(false) {
-    // Initialize camera
+    // camerma is initially off
 }
 
 std::string Camera::getStatus() {
@@ -9,7 +9,18 @@ std::string Camera::getStatus() {
 }
 
 void Camera::performAction(const std::string& action) {
-    // Handle actions like "ToggleOn", "ToggleOff", etc.
+    if (action == "On") {
+        isOn = true;
+        std::cout << "Camera is turned on." << std::endl;
+    } else if (action == "Off") {
+        isOn = false;
+        std::cout << "Camera is turned off." << std::endl;
+    } else if (action == "Toggle") {
+        isOn = !isOn;
+        std::cout << "Camera toggled to " << (isOn ? "on" : "off") << "." << std::endl;
+    } else {
+        std::cout << "Unknown action: " << action << std::endl;
+    }
 }
 
 std::string Camera::getDeviceType() const {
