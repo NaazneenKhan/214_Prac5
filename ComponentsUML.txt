@@ -15,8 +15,8 @@ Adaptee - CompositeRooms
 Component3 :Command
 
 Invoker - Remote 
-Command - MacroRoutine
-ConcreteCommand - OnOffLights, lockDoors, onOffAlarms, onOffCameras, IncDecThermostat
+Command - Command
+ConcreteCommand - MacroRoutine, OnOffLights, lockDoors, onOffAlarms, onOffCameras, IncDecThermostat
 Receiver - lights , doors , alarms, cameras, thermostat  / or CompositeRooms
 
 Component4 : Observer 

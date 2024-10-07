@@ -2,6 +2,7 @@
 #define THERMOSTAT_H
 
 #include "SmartDevices.h"
+#include <iostream>
 
 class Thermostat : public SmartDevices {
 public:

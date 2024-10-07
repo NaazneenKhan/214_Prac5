@@ -1,7 +1,16 @@
 #ifndef ONOFFALARM_H
 #define ONOFFALARM_H
 
-class OnOffAlarm : MarcoRoutine {
+#include "Command.h"
+#include "Alarm.h"
+
+class OnOffAlarm : public Command {
+public:
+    OnOffAlarm(Alarm* alarm);
+    void execute() override;
+
+private:
+    Alarm* alarm;
 };
 
 #endif

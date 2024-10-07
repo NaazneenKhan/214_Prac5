@@ -2,6 +2,7 @@
 #define LIGHTS_H
 
 #include "SmartDevices.h"
+#include <iostream>
 
 class Lights : public SmartDevices {
 public:

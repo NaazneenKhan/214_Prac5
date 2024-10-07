@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include "SmartDevices.h"
+#include <iostream>
 
 class Camera : public SmartDevices {
 public:
