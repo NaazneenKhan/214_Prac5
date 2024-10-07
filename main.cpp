@@ -1,65 +1,56 @@
 #include<iostream>
-
-#include "SmartThermostat.h"           
-#include "Thermostat.h"               
-#include "SmartThermostatIntegrator.h"
-#include "CompositeRoom.h"
-#include "Lights.h"
+#include "HomeOwner.h"     // Include HomeOwner class
+#include "Lights.h"        // Include specific smart device implementations
 #include "Doors.h"
-#include "Thermostat.h"
 #include "Alarm.h"
 #include "Camera.h"
+#include "Thermostat.h"
+#include "Remote.h"
+#include "SmartThermostat.h"
+#include "SmartThermostatIntegrator.h"
 
-void TestComposite (){
-    std::cout << "Composite Testing\n";
+void TestComposite() {
+    HomeOwner* owner = new HomeOwner();
 
-    Lights* light1 = new Lights();
-    Lights* light2 = new Lights();
-    Doors* door1 = new Doors();
-    Thermostat* thermostat = new Thermostat();
-    Alarm* alarm = new Alarm();
-    Camera* camera = new Camera();
+    // Create some smart devices (lights, doors, alarm, etc.)
+    Lights* livingRoomLights = new Lights();
+    Doors* frontDoor = new Doors();
+    Alarm* homeAlarm = new Alarm();
+    Camera* securityCamera = new Camera();
+    Thermostat* homeThermostat = new Thermostat();
 
-    // Create composite room and add devices
-    CompositeRoom* livingRoom = new CompositeRoom();
-    livingRoom->addDevice(light1);
-    livingRoom->addDevice(light2);
-    livingRoom->addDevice(door1);
-    livingRoom->addDevice(thermostat);
-    livingRoom->addDevice(alarm);
-    livingRoom->addDevice(camera);
+    // Add devices to the homeowner's control
+    owner->addDevice(livingRoomLights);
+    owner->addDevice(frontDoor);
+    owner->addDevice(homeAlarm);
+    owner->addDevice(securityCamera);
+    owner->addDevice(homeThermostat);
 
-    // Test getStatus before any actions
-    std::cout << "Living Room Status: " << livingRoom->getStatus() << std::endl;
+    // Execute some commands through HomeOwner
+    std::cout << "\nTurning on the lights and locking the door..." << std::endl;
+    owner->executeCommand("On");       // Turns on all applicable devices
+    owner->executeCommand("Lock");     // Locks the door
+    
+    // Check the status of all devices
+    owner->checkStatus();
 
-    // Perform actions on the composite room (all devices)
-    livingRoom->performAction("On");
-    std::cout << "Living Room Status after turning on lights: " << livingRoom->getStatus() << std::endl;
+    // Turn off lights and unlock doors
+    std::cout << "\nTurning off the lights and unlocking the door..." << std::endl;
+    owner->executeCommand("Off");
+    owner->executeCommand("Unlock");
 
-    livingRoom->performAction("Lock");
-    std::cout << "Living Room Status after locking doors: " << livingRoom->getStatus() << std::endl;
+    // Check status again
+    owner->checkStatus();
 
-    livingRoom->performAction("IncreaseTemp");
-    std::cout << "Living Room Status after increasing temperature: " << livingRoom->getStatus() << std::endl;
-
-    // Cleanup
-    delete light1;
-    delete light2;
-    delete door1;
-    delete thermostat;
-    delete alarm;
-    delete camera;
-    delete livingRoom;
-
+    delete owner;
 }
 
-void TestAdapter (){
-    std::cout << "Adapter Testing\n";
-
+void TestAdapter() {
+   
     Thermostat* oldThermostat = new Thermostat();
-
     SmartThermostat* smartThermo = new SmartThermostatIntegrator(oldThermostat);
 
+    std::cout << "\nAdapter Testing:" << std::endl;
     std::cout << "Setting old thermostat to 25 degrees." << std::endl;
     smartThermo->setTemperature(25);  
     std::cout << "Smart Thermostat Temperature: " << smartThermo->getTemperature() << " degrees." << std::endl;
@@ -69,24 +60,26 @@ void TestAdapter (){
     std::cout << "Smart Thermostat Temperature: " << smartThermo->getTemperature() << " degrees." << std::endl;
 
     delete smartThermo;
-    
 }
 
-void TestComponent3(){
-    
+void TestComponent3() {
+    // You could test specific commands or MacroRoutine here
 }
 
-void TestComponent4 (){
-    
+void TestComponent4() {
+    // You could test the Observer pattern here
 }
 
-int main(){
-   
-   TestComposite();
-   TestAdapter();
-//    TestComponent3();
-//    TestComponent4();
+int main() {
+    std::cout << "Testing Composite:" << std::endl;
+    TestComposite();
 
+    std::cout << "\nTesting Adapter:" << std::endl;
+    TestAdapter();
+
+    // You can uncomment these when implementing additional tests for other components
+    // TestComponent3();
+    // TestComponent4();
 
     return 0;
 }
