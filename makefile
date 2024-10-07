@@ -6,6 +6,11 @@ FLAGS	= -g3 -c -Wall -std=c++20
 LFLAGS	= 
 CC	= g++
 
+# Test files
+TEST_SRC = test_composite.cpp test_adapter.cpp test_command.cpp test_observer.cpp
+TEST_OBJS = $(TEST_SRC:.cpp=.o)
+TEST_OUT = test.out
+
 all:	a.out
 
 a.out: $(OBJS)
@@ -82,6 +87,10 @@ clean:
 
 run: a.out
 	./a.out
+
+test: $(TEST_OBJS)
+	$(CC) -g $(TEST_OBJS) $(OBJS) -o $(TEST_OUT) -lcatch2
+
 
 valgrind: a.out
 	valgrind a.out

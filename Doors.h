@@ -10,12 +10,14 @@ public:
     std::string getStatus() override;
     void performAction(const std::string& action) override;
     std::string getDeviceType() const override;
+    bool isLocked(){return isLocked_;};
+    
 
     void lock();
     void unlock();
 
 private:
-    bool isLocked;
+    bool isLocked_;
 };
 
 #endif

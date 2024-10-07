@@ -1,4 +1,5 @@
 #include "SmartDevices.h"
+#include <algorithm>
 
 void SmartDevices::addDevice(Sensors *sensor)
 {

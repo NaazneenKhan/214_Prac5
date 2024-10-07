@@ -1,4 +1,5 @@
 #include "CompositeRoom.h"
+#include <algorithm>
 
 CompositeRoom::CompositeRoom(){
 }

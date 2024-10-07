@@ -10,12 +10,13 @@ public:
     std::string getStatus() override;
     void performAction(const std::string& action) override;
     std::string getDeviceType() const override;
+    bool isOn(){return isOn_;};
 
     void startRecording();
     void stopRecording();
 
 private:
-    bool isOn;
+    bool isOn_;
 };
 
 #endif

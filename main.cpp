@@ -163,6 +163,7 @@ void TestObserver() {
 }
 
 int main() {
+    
     std::cout << "Testing Composite:" << std::endl;
     TestComposite();
 

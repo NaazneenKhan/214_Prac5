@@ -1,23 +1,23 @@
 #include "Camera.h"
 
-Camera::Camera() : isOn(false) {
+Camera::Camera() : isOn_(false) {
     // camerma is initially off
 }
 
 std::string Camera::getStatus() {
-    return isOn ? "on" : "off";
+    return isOn_ ? "on" : "off";
 }
 
 void Camera::performAction(const std::string& action) {
     if (action == "On") {
-        isOn = true;
+        isOn_ = true;
         std::cout << "Camera is turned on." << std::endl;
     } else if (action == "Off") {
-        isOn = false;
+        isOn_ = false;
         std::cout << "Camera is turned off." << std::endl;
     } else if (action == "Toggle") {
-        isOn = !isOn;
-        std::cout << "Camera toggled to " << (isOn ? "on" : "off") << "." << std::endl;
+        isOn_ = !isOn_;
+        std::cout << "Camera toggled to " << (isOn_ ? "on" : "off") << "." << std::endl;
     } else {
         std::cout << "Unknown action: " << action << std::endl;
     }

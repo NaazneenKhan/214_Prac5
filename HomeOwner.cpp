@@ -1,8 +1,9 @@
 #include "HomeOwner.h"
 #include <iostream>
+#include <algorithm>
 
 HomeOwner::HomeOwner() {
-    remote = new Remote();  // Create a new remote for the homeowner
+    remote = new Remote(); 
 }
 
 HomeOwner::~HomeOwner() {
@@ -29,7 +30,7 @@ void HomeOwner::removeDevice(SmartDevices* device) {
 void HomeOwner::executeCommand(const std::string& command) {
     std::cout << "Executing command: " << command << std::endl;
     for (SmartDevices* device : devices) {
-        device->performAction(command);  // Perform the action on each device
+        device->performAction(command);  
     }
 }
 

@@ -1,24 +1,24 @@
 #include "Doors.h"
 
-Doors::Doors() : isLocked(false) {
+Doors::Doors() : isLocked_(false) {
     // door are intially open 
 }
 
 std::string Doors::getStatus() {
-    return isLocked ? "locked" : "unlocked";
+    return isLocked_ ? "locked" : "unlocked";
 }
 
 void Doors::performAction(const std::string& action) {
 
     if (action == "Lock") {
-        isLocked = true;
+        isLocked_ = true;
         std::cout << "Doors are locked." << std::endl;
     } else if (action == "Unlock") {
-        isLocked = false;
+        isLocked_ = false;
         std::cout << "Doors are unlocked." << std::endl;
     } else if (action == "Toggle") {
-        isLocked = !isLocked;
-        std::cout << "Doors toggled to " << (isLocked ? "locked" : "unlocked") << "." << std::endl;
+        isLocked_ = !isLocked_;
+        std::cout << "Doors toggled to " << (isLocked_ ? "locked" : "unlocked") << "." << std::endl;
     } else {
         std::cout << "Unknown action: " << action << std::endl;
     }

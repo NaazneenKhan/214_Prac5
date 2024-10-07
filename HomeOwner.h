@@ -8,16 +8,16 @@
 class HomeOwner {
 private:
     Remote* remote;
-    std::vector<SmartDevices*> devices;  // List of smart devices the homeowner can control
+    std::vector<SmartDevices*> devices;  
 
 public:
     HomeOwner();
     ~HomeOwner();
 
-    void addDevice(SmartDevices* device);         // Adds a smart device
-    void removeDevice(SmartDevices* device);      // Removes a smart device
-    void executeCommand(const std::string& command);  // Executes a command via remote
-    void checkStatus();                           // Display status of all devices
+    void addDevice(SmartDevices* device);        
+    void removeDevice(SmartDevices* device);     
+    void executeCommand(const std::string& command);  
+    void checkStatus();                          
 };
 
 #endif
