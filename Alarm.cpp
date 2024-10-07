@@ -10,10 +10,10 @@ std::string Alarm::getStatus() {
 
 void Alarm::performAction(const std::string& action) {
     
-    if (action == "ToggleOn") {
+    if (action == "On") {
         isOn = true;
         std::cout << "Alarm is turned on." << std::endl;
-    } else if (action == "ToggleOff") {
+    } else if (action == "Off") {
         isOn = false;
         std::cout << "Alarm is turned off." << std::endl;
     } else if (action == "Toggle") {

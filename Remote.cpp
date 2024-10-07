@@ -1,7 +1,7 @@
 #include "Remote.h"
 
 Remote::Remote() : currentCommand(nullptr) {
-    // Constructor implementation
+    
 }
 
 void Remote::setCommand(MarcoRoutine* command) {

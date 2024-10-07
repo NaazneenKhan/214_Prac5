@@ -1,6 +1,6 @@
 #include<iostream>
-#include "HomeOwner.h"     // Include HomeOwner class
-#include "Lights.h"        // Include specific smart device implementations
+#include "HomeOwner.h"    
+#include "Lights.h"        
 #include "Doors.h"
 #include "Alarm.h"
 #include "Camera.h"
@@ -8,38 +8,39 @@
 #include "Remote.h"
 #include "SmartThermostat.h"
 #include "SmartThermostatIntegrator.h"
+#include "Remote.h"
+#include "MarcoRoutine.h"
+#include "OnOffLights.h"
+#include "LockDoors.h"
+#include "OnOffAlarm.h"
+#include "OnOffCameras.h"
+#include "IncDecTemp.h"
 
 void TestComposite() {
     HomeOwner* owner = new HomeOwner();
 
-    // Create some smart devices (lights, doors, alarm, etc.)
     Lights* livingRoomLights = new Lights();
     Doors* frontDoor = new Doors();
     Alarm* homeAlarm = new Alarm();
     Camera* securityCamera = new Camera();
     Thermostat* homeThermostat = new Thermostat();
 
-    // Add devices to the homeowner's control
     owner->addDevice(livingRoomLights);
     owner->addDevice(frontDoor);
     owner->addDevice(homeAlarm);
     owner->addDevice(securityCamera);
     owner->addDevice(homeThermostat);
 
-    // Execute some commands through HomeOwner
     std::cout << "\nTurning on the lights and locking the door..." << std::endl;
-    owner->executeCommand("On");       // Turns on all applicable devices
-    owner->executeCommand("Lock");     // Locks the door
+    owner->executeCommand("On");
+    owner->executeCommand("Lock");    
     
-    // Check the status of all devices
     owner->checkStatus();
 
-    // Turn off lights and unlock doors
     std::cout << "\nTurning off the lights and unlocking the door..." << std::endl;
     owner->executeCommand("Off");
     owner->executeCommand("Unlock");
 
-    // Check status again
     owner->checkStatus();
 
     delete owner;
@@ -62,12 +63,53 @@ void TestAdapter() {
     delete smartThermo;
 }
 
-void TestComponent3() {
-    // You could test specific commands or MacroRoutine here
+void TestCommand() {
+    Lights* lights = new Lights();
+    Doors* doors = new Doors();
+    Alarm* alarm = new Alarm();
+    Camera* camera = new Camera();
+    Thermostat* thermostat = new Thermostat();
+
+   
+    OnOffLights* lightsCommand = new OnOffLights(lights);
+    LockDoors* lockDoorsCommand = new LockDoors(doors);
+    OnOffAlarm* alarmCommand = new OnOffAlarm(alarm);
+    OnOffCameras* cameraCommand = new OnOffCameras(camera);
+    IncDecTemp* tempIncreaseCommand = new IncDecTemp(thermostat, true);
+    IncDecTemp* tempDecreaseCommand = new IncDecTemp(thermostat, false);
+
+    
+    MarcoRoutine* goodnightRoutine = new MarcoRoutine();
+    goodnightRoutine->addProcedure(lightsCommand);
+    goodnightRoutine->addProcedure(lockDoorsCommand);
+    goodnightRoutine->addProcedure(alarmCommand);
+    goodnightRoutine->addProcedure(cameraCommand);
+
+   
+    Remote* remote = new Remote();
+
+    // Setting a command (Goodnight routine) and executing it
+    remote->setCommand(goodnightRoutine);
+    remote->pressButton();
+
+   
+    delete lightsCommand;
+    delete lockDoorsCommand;
+    delete alarmCommand;
+    delete cameraCommand;
+    delete tempIncreaseCommand;
+    delete tempDecreaseCommand;
+    delete goodnightRoutine;
+    delete remote;
+    delete lights;
+    delete doors;
+    delete alarm;
+    delete camera;
+    delete thermostat;
+
 }
 
 void TestComponent4() {
-    // You could test the Observer pattern here
 }
 
 int main() {
@@ -77,8 +119,10 @@ int main() {
     std::cout << "\nTesting Adapter:" << std::endl;
     TestAdapter();
 
-    // You can uncomment these when implementing additional tests for other components
-    // TestComponent3();
+    std::cout << "\nTesting Command:" << std::endl;
+    TestCommand();
+
+
     // TestComponent4();
 
     return 0;

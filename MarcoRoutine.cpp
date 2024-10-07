@@ -1,7 +1,6 @@
 #include "MarcoRoutine.h"
 
 MarcoRoutine::MarcoRoutine() {
-    // Constructor implementation
 }
 
 void MarcoRoutine::execute() {
@@ -15,5 +14,8 @@ void MarcoRoutine::addProcedure(Command* command) {
 }
 
 void MarcoRoutine::removeProcedure(Command* command) {
-    // Remove command from procedures
+    auto it = std::find(procedures.begin(), procedures.end(), command);
+    if (it != procedures.end()) {
+        procedures.erase(it);
+    }
 }
