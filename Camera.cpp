@@ -15,3 +15,13 @@ void Camera::performAction(const std::string& action) {
 std::string Camera::getDeviceType() const {
     return "Camera";
 }
+
+void Camera::startRecording()
+{
+    changeStatus("Camera is RECORDING");
+}
+
+void Camera::stopRecording()
+{
+    changeStatus("Camera STOPPED RECORDING");
+}

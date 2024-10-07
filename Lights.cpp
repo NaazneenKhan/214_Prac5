@@ -15,3 +15,13 @@ void Lights::performAction(const std::string& action) {
 std::string Lights::getDeviceType() const {
     return "Light";
 }
+
+void Lights::turnOn()
+{
+   changeStatus("Light is ON"); 
+}
+
+void Lights::turnOff()
+{
+    changeStatus("Light is OFF");
+}

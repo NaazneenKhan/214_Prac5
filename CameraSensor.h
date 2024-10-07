@@ -1,7 +1,12 @@
 #ifndef CAMERASENSOR_H
 #define CAMERASENSOR_H
 
-class CameraSensor : Sensors {
+#include "Sensors.h"
+#include <iostream>
+
+class CameraSensor : public Sensors {
+    public:
+        void update(const std::string& status) override;
 };
 
 #endif

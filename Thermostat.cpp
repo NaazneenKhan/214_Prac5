@@ -26,3 +26,10 @@ double Thermostat::getSmartTemperature() const // for adapter
 {
     return temperature;
 }
+
+
+
+void Thermostat::setTemperature(int temp)
+{
+    changeStatus("Thermostat set to " + std::to_string(temp) + " degrees");
+}

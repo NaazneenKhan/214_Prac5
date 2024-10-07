@@ -15,3 +15,13 @@ void Alarm::performAction(const std::string& action) {
 std::string Alarm::getDeviceType() const {
     return "Alarm";
 }
+
+void Alarm::activate()
+{
+    changeStatus("Alarm is ACTIVATED");
+}
+
+void Alarm::deactivate()
+{
+    changeStatus("Alarm is DEACTIVATED");
+}

@@ -1,7 +1,12 @@
 #ifndef ALARMSENSOR_H
 #define ALARMSENSOR_H
 
-class AlarmSensor : Sensors {
+#include "Sensors.h"
+#include <iostream>
+
+class AlarmSensor : public Sensors {
+    public:
+        void update(const std::string& status) override;
 };
 
 #endif

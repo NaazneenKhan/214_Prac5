@@ -13,6 +13,8 @@ public:
     void setSmartTemperature(double temp);
     double getSmartTemperature() const;
 
+    void setTemperature(int temp);
+
 private:
     int temperature;
 };

@@ -10,6 +10,9 @@ public:
     void performAction(const std::string& action) override;
     std::string getDeviceType() const override;
 
+    void activate();
+    void deactivate();
+
 private:
     bool isOn;
 };

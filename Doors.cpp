@@ -15,3 +15,13 @@ void Doors::performAction(const std::string& action) {
 std::string Doors::getDeviceType() const {
     return "Door";
 }
+
+void Doors::lock()
+{
+    changeStatus("Door is LOCKED");
+}
+
+void Doors::unlock()
+{
+    changeStatus("Door is UNLOCKED");
+}
