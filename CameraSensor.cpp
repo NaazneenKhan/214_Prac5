@@ -1,6 +1,15 @@
 #include "CameraSensor.h"
 
-void CameraSensor::update(const std::string &status)
+void CameraSensor::update(SensorUpdate detection)
 {
-    std::cout << "Camera sensor detected change: " << status << std::endl;
+    // std::cout << "Camera sensor detected change: " << status << std::endl;
+   if (std::holds_alternative<bool>(detection)) {
+            bool motionDetected = std::get<bool>(detection);
+            if (motionDetected) {
+                std::cout << "Camera sensor: Motion detected! Starting recording." << std::endl;
+            } else {
+                std::cout << "Camera sensor: No motion detected. Stopping recording." << std::endl;
+            }
+        }
+    
 }

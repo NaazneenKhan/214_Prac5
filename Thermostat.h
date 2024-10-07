@@ -16,6 +16,15 @@ public:
 
     void setTemperature(int temp);
 
+
+    void adjustForOutsideTemp(double outsideTemperature) {
+        if (outsideTemperature > 30.0) {
+            performAction("DecreaseTemp");  
+        } else if (outsideTemperature < 15.0) {
+            performAction("IncreaseTemp");  
+        }
+    }
+
 private:
     int temperature;
 };

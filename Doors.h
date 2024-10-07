@@ -16,6 +16,14 @@ public:
     void lock();
     void unlock();
 
+    void adjustForDoorOpen(bool doorOpened) {
+        if (doorOpened) {
+            std::cout << "Door is now open. Waiting for further actions." << std::endl;
+        } else {
+            performAction("Lock");
+        }
+    }
+
 private:
     bool isLocked_;
 };

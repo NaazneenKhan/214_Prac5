@@ -140,12 +140,49 @@ void TestObserver() {
     camera->addDevice(cameraSensor);
     thermostat->addDevice(thermostatSensor);
 
- 
-    light->turnOn();   
-    door->lock();      
-    alarm->activate(); 
-    camera->startRecording(); 
-    thermostat->setTemperature(22); 
+    // Simulate motion detection for lights and alarm
+    std::cout << "\nSimulating motion detection...\n";
+    lightSensor->update(true);  // Motion detected
+    light->adjustForMotion(true); // Lights turn on
+    alarmSensor->update(true);  // Alarm sensor detects motion
+    alarm->adjustForMotion(true); // Alarm activates
+    cameraSensor->update(true);  // Camera sensor detects motion
+    camera->adjustForMotion(true); // Camera starts recording
+
+    // Simulate no motion
+    std::cout << "\nSimulating no motion...\n";
+    lightSensor->update(false);  // No motion
+    light->adjustForMotion(false); // Lights turn off
+    alarmSensor->update(false);  // No motion detected
+    alarm->adjustForMotion(false); // Alarm deactivates
+    cameraSensor->update(false);  // Camera sensor sees no motion
+    camera->adjustForMotion(false); // Camera stops recording
+
+    // Simulate door opening
+    std::cout << "\nSimulating door opening...\n";
+    doorSensor->update(true);  // Door opened
+    door->adjustForDoorOpen(true); // Door opens
+
+    // Simulate door closing and locking after it was opened
+    std::cout << "\nSimulating door closing...\n";
+    doorSensor->update(false);  // Door closed
+    door->adjustForDoorOpen(false);  // Lock the door
+
+    // Simulate hot outside temperature
+    std::cout << "\nSimulating hot outside temperature...\n";
+    thermostatSensor->update(35.0);  // Outside temperature is hot
+    thermostat->adjustForOutsideTemp(35.0);
+
+    // Simulate cold outside temperature
+    std::cout << "\nSimulating cold outside temperature...\n";
+    thermostatSensor->update(10.0);  // Outside temperature is cold
+    thermostat->adjustForOutsideTemp(10.0);
+
+    // light->turnOn();   
+    // door->lock();      
+    // alarm->activate(); 
+    // camera->startRecording(); 
+    // thermostat->setTemperature(22); 
 
    
     delete lightSensor;

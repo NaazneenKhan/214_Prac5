@@ -23,8 +23,12 @@ public:
     public:
         void addDevice(Sensors* sensor);
         void removeDevice(Sensors* sensor);
-        void notifyDevices();
+        // void notifyDevices();
         void changeStatus(const std::string& newStatus);
+
+
+        void notifySensors(bool motionDetected);  // For motion-based sensors
+    void notifySensors(double outsideTemperature);  // For thermostat
 };
 
 #endif

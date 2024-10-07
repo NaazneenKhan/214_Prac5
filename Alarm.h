@@ -15,6 +15,14 @@ public:
     void activate();
     void deactivate();
 
+    void adjustForMotion(bool motionDetected) {
+        if (motionDetected) {
+            performAction("On");  // Activate alarm if motion is detected
+        } else {
+            performAction("Off");  // Deactivate alarm if no motion is detected
+        }
+    }
+
 private:
     bool isOn_;
 };

@@ -15,6 +15,15 @@ public:
     void startRecording();
     void stopRecording();
 
+
+    void adjustForMotion(bool motionDetected) {
+        if (motionDetected) {
+            performAction("On");
+        } else {
+            performAction("Off");
+        }
+    }
+
 private:
     bool isOn_;
 };

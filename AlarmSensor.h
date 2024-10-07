@@ -6,7 +6,8 @@
 
 class AlarmSensor : public Sensors {
     public:
-        void update(const std::string& status) override;
+        void update(SensorUpdate detection) override;
+        // void update(double) override;
 };
 
 #endif
