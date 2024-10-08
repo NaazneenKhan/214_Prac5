@@ -210,6 +210,120 @@ void TestObserver() {
 
 }
 
+
+void DemoScenario() {
+    std::cout << "Starting Home Automation Scenario...\n" << std::endl;
+
+    // Step 1: Homeowner prepares for bed - composite pattern usage
+    std::cout << "Step 1: Homeowner prepares for bed.\n" << std::endl;
+    HomeOwner* owner = new HomeOwner();
+
+    Lights* livingRoomLights = new Lights();
+    Doors* frontDoor = new Doors();
+    Alarm* homeAlarm = new Alarm();
+    Camera* securityCamera = new Camera();
+    Thermostat* homeThermostat = new Thermostat();
+
+    owner->addDevice(livingRoomLights);
+    owner->addDevice(frontDoor);
+    owner->addDevice(homeAlarm);
+    owner->addDevice(securityCamera);
+    owner->addDevice(homeThermostat);
+
+    std::cout << "Turning on the lights and locking the door...\n" << std::endl;
+    owner->executeCommand("On");
+    owner->executeCommand("Lock");
+    
+    std::cout << "Checking device status...\n";
+    owner->checkStatus();
+
+    // Step 2: Homeowner realizes they left the lights on, adapts to the smart thermostat
+    std::cout << "\nStep 2: Adapting to smart thermostat and adjusting temperature.\n" << std::endl;
+    Thermostat* oldThermostat = new Thermostat();
+    SmartThermostat* smartThermo = new SmartThermostatIntegrator(oldThermostat);
+
+    std::cout << "Smart Thermostat activated, setting to 25 degrees.\n";
+    smartThermo->setTemperature(25);
+    std::cout << "Smart Thermostat Temperature: " << smartThermo->getTemperature() << " degrees.\n";
+
+    // Step 3: Homeowner activates Goodnight routine
+    std::cout << "\nStep 3: Homeowner activates Goodnight routine.\n" << std::endl;
+    Lights* lights = new Lights();
+    Doors* doors = new Doors();
+    Alarm* alarm = new Alarm();
+    Camera* camera = new Camera();
+    Thermostat* thermostat = new Thermostat();
+
+    OnOffLights* lightsCommand = new OnOffLights(lights);
+    LockDoors* lockDoorsCommand = new LockDoors(doors);
+    OnOffAlarm* alarmCommand = new OnOffAlarm(alarm);
+    OnOffCameras* cameraCommand = new OnOffCameras(camera);
+    MarcoRoutine* goodnightRoutine = new MarcoRoutine();
+    goodnightRoutine->addProcedure(lightsCommand);
+    goodnightRoutine->addProcedure(lockDoorsCommand);
+    goodnightRoutine->addProcedure(alarmCommand);
+    goodnightRoutine->addProcedure(cameraCommand);
+
+    Remote* remote = new Remote();
+    remote->setCommand(goodnightRoutine);
+    std::cout << "Executing Goodnight routine...\n" << std::endl;
+    remote->pressButton();
+
+    // Step 4: Sensors detect motion and temperature changes
+    std::cout << "\nStep 4: Sensors detect changes in the environment.\n" << std::endl;
+
+    LightSensor* lightSensor = new LightSensor();
+    DoorSensor* doorSensor = new DoorSensor();
+    AlarmSensor* alarmSensor = new AlarmSensor();
+    CameraSensor* cameraSensor = new CameraSensor();
+    ThermostatSensor* thermostatSensor = new ThermostatSensor();
+
+    lights->addDevice(lightSensor);
+    doors->addDevice(doorSensor);
+    alarm->addDevice(alarmSensor);
+    camera->addDevice(cameraSensor);
+    thermostat->addDevice(thermostatSensor);
+
+    // Simulating sensor actions
+    std::cout << "Simulating motion detection and response:\n" << std::endl;
+    lights->notifySensors(true);
+    lights->adjustForMotion(true);
+    alarm->notifySensors(true);
+    alarm->adjustForMotion(true);
+    camera->notifySensors(true);
+    camera->adjustForMotion(true);
+
+    std::cout << "\nSimulating hot outside temperature...\n";
+    thermostat->notifySensors(35.0);
+    thermostat->adjustForOutsideTemp(35.0);
+
+    std::cout << "\nSimulating cold outside temperature...\n";
+    thermostat->notifySensors(10.0);
+    thermostat->adjustForOutsideTemp(10.0);
+
+    // Cleanup
+    delete owner;
+    delete smartThermo;
+    delete lightsCommand;
+    delete lockDoorsCommand;
+    delete alarmCommand;
+    delete cameraCommand;
+    delete goodnightRoutine;
+    delete remote;
+    delete lightSensor;
+    delete doorSensor;
+    delete alarmSensor;
+    delete cameraSensor;
+    delete thermostatSensor;
+    delete lights;
+    delete doors;
+    delete alarm;
+    delete camera;
+    delete thermostat;
+
+    std::cout << "\nHome Automation Scenario completed.\n" << std::endl;
+}
+
 int main() {
     
     std::cout << "Testing Composite:" << std::endl;
@@ -223,6 +337,9 @@ int main() {
 
     std::cout << "\nTesting Observer:" << std::endl; 
     TestObserver();
+
+
+   // DemoScenario();
 
     return 0;
 }

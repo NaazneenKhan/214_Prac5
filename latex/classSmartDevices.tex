@@ -1,0 +1,39 @@
+\hypertarget{classSmartDevices}{}\doxysection{Smart\+Devices Class Reference}
+\label{classSmartDevices}\index{SmartDevices@{SmartDevices}}
+
+
+Inheritance diagram for Smart\+Devices\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSmartDevices_a727f57d2d324dc34ee3ac2763ebb682d}\label{classSmartDevices_a727f57d2d324dc34ee3ac2763ebb682d}} 
+virtual std\+::string {\bfseries get\+Status} ()=0
+\item 
+\mbox{\Hypertarget{classSmartDevices_a97d177db3ab8583fda2da5f236bbeec1}\label{classSmartDevices_a97d177db3ab8583fda2da5f236bbeec1}} 
+virtual void {\bfseries perform\+Action} (const std\+::string \&action)=0
+\item 
+\mbox{\Hypertarget{classSmartDevices_a6bd6e35ee3e09c3e39063af4484b5f9d}\label{classSmartDevices_a6bd6e35ee3e09c3e39063af4484b5f9d}} 
+virtual std\+::string {\bfseries get\+Device\+Type} () const =0
+\item 
+\mbox{\Hypertarget{classSmartDevices_a616570a9cd26a10008527bfb7941d163}\label{classSmartDevices_a616570a9cd26a10008527bfb7941d163}} 
+void {\bfseries add\+Device} (\mbox{\hyperlink{classSensors}{Sensors}} $\ast$sensor)
+\item 
+\mbox{\Hypertarget{classSmartDevices_ab99f6e6c0c0b38688100742ac38e7a46}\label{classSmartDevices_ab99f6e6c0c0b38688100742ac38e7a46}} 
+void {\bfseries remove\+Device} (\mbox{\hyperlink{classSensors}{Sensors}} $\ast$sensor)
+\item 
+\mbox{\Hypertarget{classSmartDevices_a4558a9b6c2329f3f3d0c96352eb3bec9}\label{classSmartDevices_a4558a9b6c2329f3f3d0c96352eb3bec9}} 
+void {\bfseries change\+Status} (const std\+::string \&new\+Status)
+\item 
+\mbox{\Hypertarget{classSmartDevices_ae116d12bb5881ef6018e4647091c8a32}\label{classSmartDevices_ae116d12bb5881ef6018e4647091c8a32}} 
+void {\bfseries notify\+Sensors} (bool motion\+Detected)
+\item 
+\mbox{\Hypertarget{classSmartDevices_abf1c6c3427409fa3652a3ef211f9fb0c}\label{classSmartDevices_abf1c6c3427409fa3652a3ef211f9fb0c}} 
+void {\bfseries notify\+Sensors} (double outside\+Temperature)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Smart\+Devices.\+h\item 
+Smart\+Devices.\+cpp\end{DoxyCompactItemize}

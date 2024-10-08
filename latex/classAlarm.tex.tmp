@@ -1,0 +1,40 @@
+\hypertarget{classAlarm}{}\doxysection{Alarm Class Reference}
+\label{classAlarm}\index{Alarm@{Alarm}}
+
+
+Inheritance diagram for Alarm\+:
+% FIG 0
+
+
+Collaboration diagram for Alarm\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAlarm_a917f515209b7811eeb3e4e0f8221733f}\label{classAlarm_a917f515209b7811eeb3e4e0f8221733f}} 
+std\+::string {\bfseries get\+Status} () override
+\item 
+\mbox{\Hypertarget{classAlarm_aff0ab6eaa8b057d7fd7d71a92aa65824}\label{classAlarm_aff0ab6eaa8b057d7fd7d71a92aa65824}} 
+void {\bfseries perform\+Action} (const std\+::string \&action) override
+\item 
+\mbox{\Hypertarget{classAlarm_a49b45c29a4ebc05552a47c690dab0957}\label{classAlarm_a49b45c29a4ebc05552a47c690dab0957}} 
+std\+::string {\bfseries get\+Device\+Type} () const override
+\item 
+\mbox{\Hypertarget{classAlarm_a5b421877aedc461ff91e4dff4dd7b475}\label{classAlarm_a5b421877aedc461ff91e4dff4dd7b475}} 
+bool {\bfseries is\+On} ()
+\item 
+\mbox{\Hypertarget{classAlarm_a7f1822e79663ce976ac57bc373cc97b9}\label{classAlarm_a7f1822e79663ce976ac57bc373cc97b9}} 
+void {\bfseries activate} ()
+\item 
+\mbox{\Hypertarget{classAlarm_a0ad655f7fabd3a2649133cac31daca2d}\label{classAlarm_a0ad655f7fabd3a2649133cac31daca2d}} 
+void {\bfseries deactivate} ()
+\item 
+\mbox{\Hypertarget{classAlarm_abea1a0982c7bad9ab1a0c57c27734dba}\label{classAlarm_abea1a0982c7bad9ab1a0c57c27734dba}} 
+void {\bfseries adjust\+For\+Motion} (bool motion\+Detected)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Alarm.\+h\item 
+Alarm.\+cpp\end{DoxyCompactItemize}

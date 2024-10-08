@@ -2,7 +2,7 @@ OBJS	= main.o Alarm.o AlarmSensor.o Camera.o CameraSensor.o CompositeRoom.o Door
 SOURCE	= main.cpp Alarm.cpp AlarmSensor.cpp Camera.cpp CameraSensor.cpp CompositeRoom.cpp Doors.cpp DoorSensor.cpp HomeOwner.cpp IncDecTemp.cpp Lights.cpp LightSensor.cpp LockDoors.cpp MarcoRoutine.cpp OnOffAlarm.cpp OnOffCameras.cpp OnOffLights.cpp Remote.cpp SmartDevices.cpp SmartThermostatIntegrator.cpp Thermostat.cpp ThermostatSensor.cpp
 HEADER	= Alarm.h AlarmSensor.h Camera.h CameraSensor.h Command.h CompositeRoom.h Doors.h DoorSensor.h HomeOwner.h IncDecTemp.h Lights.h LightSensor.h LockDoors.h MarcoRoutine.h OnOffAlarm.h OnOffCameras.h OnOffLights.h Remote.h Rooms.h Sensors.h SmartDevices.h SmartRoomAdapter.h SmartThermostat.h SmartThermostatIntegrator.h Thermostat.h ThermostatSensor.h
 OUT	= a.out
-FLAGS	= -g3 -c -Wall -std=c++20
+FLAGS	= -g3 -c -Wall -std=c++17
 LFLAGS	= 
 CC	= g++
 
@@ -91,12 +91,11 @@ run: a.out
 test: $(TEST_OBJS)
 	$(CC) -g $(TEST_OBJS) $(OBJS) -o $(TEST_OUT) -lcatch2
 
-
 valgrind: a.out
-	valgrind a.out
+	valgrind ./a.out
 
 valgrind_leakcheck: a.out
-	valgrind --leak-check=full a.out
+	valgrind --leak-check=full ./a.out
 
 valgrind_extreme: a.out
-	valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes a.out
+	valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes ./a.out
