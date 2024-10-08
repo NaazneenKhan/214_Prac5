@@ -1,5 +1,5 @@
 #include "DoorSensor.h"
-
+#include <variant>
 void DoorSensor::update(SensorUpdate detection)
 {
     // std::cout << "Door sensor detected change: " << status << std::endl;

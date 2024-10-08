@@ -142,42 +142,34 @@ void TestObserver() {
 
     // Simulate motion detection for lights and alarm
     std::cout << "\nSimulating motion detection...\n";
-    // lightSensor->update(true);  // Motion detected
-     // Lights turn on
-    // alarmSensor->update(true);  // Alarm sensor detects motion
-    // Alarm activates
-    // cameraSensor->update(true);  // Camera sensor detects motion
-     // Camera starts recording
 
-// Notify sensors from each smart device
-    light->notifySensors(true); // Notify attached sensors of motion
+    // Notify sensors from each smart device
+    light->notifySensors(true); // motion detected 
     light->adjustForMotion(true);
-    alarm->notifySensors(true);  // Notify attached sensors of motion
+    alarm->notifySensors(true);  // motion detected 
     alarm->adjustForMotion(true); 
-    camera->notifySensors(true); 
-    camera->adjustForMotion(true); // Notify attached sensors of motion
+    camera->notifySensors(true); //motion detected 
+    camera->adjustForMotion(true); 
+
+    // // Simulate door opening
+    std::cout << "\nSimulating door opening...\n";
     door->notifySensors(true);    // Notify attached sensors of door opened
     door->adjustForDoorOpen(true);
 
     // Simulate no motion
     std::cout << "\nSimulating no motion...\n";
-    light->notifySensors(false); // Notify attached sensors of motion
+    light->notifySensors(false); // no motion detected
     light->adjustForMotion(false);
-    alarm->notifySensors(false);  // Notify attached sensors of motion
+    alarm->notifySensors(false);  // no motion detected
     alarm->adjustForMotion(false); 
-    camera->notifySensors(false); 
-    camera->adjustForMotion(false); // Notify attached sensors of motion
+    camera->notifySensors(false); // no motion detected
+    camera->adjustForMotion(false); 
+
+     // // Simulate door closing and locking after it was opened
+    std::cout << "\nSimulating door closing...\n";
     door->notifySensors(false);    // Notify attached sensors of door opened
     door->adjustForDoorOpen(false);
-    // // Simulate door opening
-    // std::cout << "\nSimulating door opening...\n";
-    // doorSensor->update(true);  // Door opened
-    // door->adjustForDoorOpen(true); // Door opens
-
-    // // Simulate door closing and locking after it was opened
-    // std::cout << "\nSimulating door closing...\n";
-    // doorSensor->update(false);  // Door closed
-    // door->adjustForDoorOpen(false);  // Lock the door
+    
 
     // // Simulate hot outside temperature
     std::cout << "\nSimulating hot outside temperature...\n";

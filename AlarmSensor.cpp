@@ -1,5 +1,5 @@
 #include "AlarmSensor.h"
-
+#include <variant>
 void AlarmSensor::update(SensorUpdate detection)
 {
     // std::cout << "Alarm sensor detected change: " << status << std::endl;

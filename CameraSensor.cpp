@@ -1,5 +1,5 @@
 #include "CameraSensor.h"
-
+#include <variant>
 void CameraSensor::update(SensorUpdate detection)
 {
     // std::cout << "Camera sensor detected change: " << status << std::endl;

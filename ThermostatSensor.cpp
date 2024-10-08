@@ -1,5 +1,5 @@
 #include "ThermostatSensor.h"
-
+#include <variant>
 void ThermostatSensor::update(SensorUpdate detection)
 {
     // std::cout << "Thermostat sensor detected change: " << status << std::endl;

@@ -3,7 +3,7 @@
 
 #include "Sensors.h"
 #include <iostream>
-
+#include <variant>
 class ThermostatSensor : public Sensors {
     public:
         void update(SensorUpdate detection) override;

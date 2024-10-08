@@ -1,5 +1,5 @@
 #include "LightSensor.h"
-
+#include <variant>
 void LightSensor::update(SensorUpdate detection)
 {
     // std::cout << "Light sensor detected change: " << status << std::endl;

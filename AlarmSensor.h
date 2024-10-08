@@ -3,7 +3,7 @@
 
 #include "Sensors.h"
 #include <iostream>
-
+#include <variant>
 class AlarmSensor : public Sensors {
     public:
         void update(SensorUpdate detection) override;
